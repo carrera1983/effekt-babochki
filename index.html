@@ -705,25 +705,50 @@ footer a { color:rgba(255,255,255,.25); text-decoration:none; }
     <p class="reviews-sub">Больше 500 живых комментариев в открытой группе. Не скрины, а настоящие слова настоящих людей.</p>
 
 
-<div class="reviews-grid" style="grid-template-columns: repeat(3, 1fr);">
-  <div class="rev-card" style="padding:16px;">
-    <img src="https://carrera1983.github.io/effekt-babochki/1.jfif" style="width:100%; border-radius:4px;" alt="отзыв">
+<div class="carousel" style="position:relative; overflow:hidden; width:100%;">
+  <div class="carousel-track" id="carouselTrack" style="display:flex; transition:transform 0.4s ease; gap:16px;">
+    <div style="min-width:80%; max-width:80%;">
+      <img src="https://carrera1983.github.io/effekt-babochki/1.jfif" style="width:100%; border-radius:8px;" alt="отзыв">
+    </div>
+    <div style="min-width:80%; max-width:80%;">
+      <img src="https://carrera1983.github.io/effekt-babochki/2.jfif" style="width:100%; border-radius:8px;" alt="отзыв">
+    </div>
+    <div style="min-width:80%; max-width:80%;">
+      <img src="https://carrera1983.github.io/effekt-babochki/3.jfif" style="width:100%; border-radius:8px;" alt="отзыв">
+    </div>
+    <div style="min-width:80%; max-width:80%;">
+      <img src="https://carrera1983.github.io/effekt-babochki/4.jfif" style="width:100%; border-radius:8px;" alt="отзыв">
+    </div>
+    <div style="min-width:80%; max-width:80%;">
+      <img src="https://carrera1983.github.io/effekt-babochki/5.jfif" style="width:100%; border-radius:8px;" alt="отзыв">
+    </div>
+    <div style="min-width:80%; max-width:80%;">
+      <img src="https://carrera1983.github.io/effekt-babochki/6.jfif" style="width:100%; border-radius:8px;" alt="отзыв">
+    </div>
   </div>
-  <div class="rev-card" style="padding:16px;">
-    <img src="https://carrera1983.github.io/effekt-babochki/2.jfif" style="width:100%; border-radius:4px;" alt="отзыв">
-  </div>
-  <div class="rev-card" style="padding:16px;">
-    <img src="https://carrera1983.github.io/effekt-babochki/3.jfif" style="width:100%; border-radius:4px;" alt="отзыв">
-  </div>
-  <div class="rev-card" style="padding:16px;">
-    <img src="https://carrera1983.github.io/effekt-babochki/4.jfif" style="width:100%; border-radius:4px;" alt="отзыв">
-  </div>
-  <div class="rev-card" style="padding:16px;">
-    <img src="https://carrera1983.github.io/effekt-babochki/5.jfif" style="width:100%; border-radius:4px;" alt="отзыв">
-  </div>
-  <div class="rev-card" style="padding:16px;">
-    <img src="https://carrera1983.github.io/effekt-babochki/6.jfif" style="width:100%; border-radius:4px;" alt="отзыв">
-  </div>
+  <button onclick="prevSlide()" style="position:absolute;left:8px;top:50%;transform:translateY(-50%);background:rgba(201,169,110,0.8);border:none;color:white;width:36px;height:36px;border-radius:50%;font-size:18px;cursor:pointer;">‹</button>
+  <button onclick="nextSlide()" style="position:absolute;right:8px;top:50%;transform:translateY(-50%);background:rgba(201,169,110,0.8);border:none;color:white;width:36px;height:36px;border-radius:50%;font-size:18px;cursor:pointer;">›</button>
+</div>
+
+<script>
+let current = 0;
+const track = document.getElementById('carouselTrack');
+const items = track.children;
+function updateCarousel() {
+  const width = items[0].offsetWidth + 16;
+  track.style.transform = `translateX(-${current * width}px)`;
+}
+function nextSlide() {
+  if(current < items.length - 1) current++;
+  else current = 0;
+  updateCarousel();
+}
+function prevSlide() {
+  if(current > 0) current--;
+  else current = items.length - 1;
+  updateCarousel();
+}
+</script>
 </div>
 
 
